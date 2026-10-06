@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://terradue.github.io/pystac-ext-themes/reference/api/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Python API - Themes PySTAC extension</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Python API";
+        var mkdocs_page_input_path = "reference/api.md";
+        var mkdocs_page_url = "/pystac-ext-themes/reference/api/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Themes PySTAC extension
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/first-steps/">First steps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/earthcode/">EarthCODE theme metadata</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/install/">Install</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/use-extension/">Work with themes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fields/">Theme fields</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Python API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pystac.extensions.themes">themes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.SCHEMA_URI">SCHEMA_URI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.THEMES_PROP">THEMES_PROP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.THEMES_EXTENSION_HOOKS">THEMES_EXTENSION_HOOKS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.ThemeConcept">ThemeConcept</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemeConcept.from_dict">from_dict</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemeConcept.to_dict">to_dict</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.Theme">Theme</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.Theme.from_dict">from_dict</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.Theme.to_dict">to_dict</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtension">ThemesExtension</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtension.themes">themes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtension.apply">apply</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtension.ext">ext</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtension.get_schema_uri">get_schema_uri</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtension.summaries">summaries</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.CatalogThemesExtension">CatalogThemesExtension</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.CollectionThemesExtension">CollectionThemesExtension</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.ItemThemesExtension">ItemThemesExtension</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.SummariesThemesExtension">SummariesThemesExtension</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.themes.SummariesThemesExtension.themes">themes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.themes.ThemesExtensionHooks">ThemesExtensionHooks</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/architecture/">Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Themes PySTAC extension</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Reference</li>
+      <li class="breadcrumb-item active">Python API</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Terradue/pystac-ext-themes/edit/main/docs/reference/api.md">Edit on pystac-ext-themes</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Terradue
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<h1 id="python-api">Python API<a class="headerlink" href="#python-api" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pystac.extensions.themes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Theme</span><span class="p">,</span> <span class="n">ThemeConcept</span><span class="p">,</span> <span class="n">ThemesExtension</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Entry point</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ThemesExtension.ext(obj, add_if_missing=False)</code></td>
+<td>Wrap a Catalog, Collection, or Item.</td>
+</tr>
+<tr>
+<td><code>ThemesExtension.summaries(collection, add_if_missing=False)</code></td>
+<td>Wrap Collection summaries.</td>
+</tr>
+<tr>
+<td><code>extension.apply(themes)</code></td>
+<td>Replace the object's themes with a list of <code>Theme</code> values.</td>
+</tr>
+<tr>
+<td><code>extension.themes</code></td>
+<td>Read, replace, or clear themes using <code>None</code>.</td>
+</tr>
+<tr>
+<td><code>ThemesExtension.get_schema_uri()</code></td>
+<td>Return the Themes v1.0.0 schema URL.</td>
+</tr>
+<tr>
+<td><code>ThemesExtension.has_extension(obj)</code></td>
+<td>Check for that URL in <code>stac_extensions</code>.</td>
+</tr>
+<tr>
+<td><code>ThemesExtension.add_to(obj)</code></td>
+<td>Add the schema URL if absent.</td>
+</tr>
+<tr>
+<td><code>ThemesExtension.remove_from(obj)</code></td>
+<td>Remove the schema declaration.</td>
+</tr>
+<tr>
+<td><code>Theme.to_dict()</code> / <code>Theme.from_dict(data)</code></td>
+<td>Serialize or deserialize a theme.</td>
+</tr>
+<tr>
+<td><code>ThemeConcept.to_dict()</code> / <code>ThemeConcept.from_dict(data)</code></td>
+<td>Serialize or deserialize a concept.</td>
+</tr>
+</tbody>
+</table>
+<p><code>ext()</code> and <code>summaries()</code> raise <code>pystac.ExtensionNotImplemented</code> when the declaration is missing unless <code>add_if_missing=True</code>. <code>ext()</code> raises <code>pystac.ExtensionTypeError</code> for unsupported objects.</p>
+<p>Use <code>ThemesExtension.ext(obj)</code> directly. PySTAC does not provide <code>item.ext.themes</code> or <code>catalog.ext.themes</code>, and this package does not register those shortcuts. There is no <code>from_item()</code> alias.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="pystac.extensions.themes" class="doc doc-heading">
+            <code>pystac.extensions.themes</code>
+
+
+<a href="#pystac.extensions.themes" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Implements the :stac-ext:<code>Themes Extension &lt;themes&gt;</code>.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.themes.SCHEMA_URI" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">SCHEMA_URI</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'https://stac-extensions.github.io/themes/v1.0.0/schema.json'</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.SCHEMA_URI" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.themes.THEMES_PROP" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">THEMES_PROP</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'themes'</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.THEMES_PROP" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.themes.THEMES_EXTENSION_HOOKS" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">THEMES_EXTENSION_HOOKS</span><span class="p">:</span> <span class="n">ExtensionHooks</span> <span class="o">=</span> <span class="n">ThemesExtensionHooks</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.THEMES_EXTENSION_HOOKS" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.ThemeConcept" class="doc doc-heading">
+            <code>ThemeConcept</code>
+
+
+<a href="#pystac.extensions.themes.ThemeConcept" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>A concept in a knowledge organization system or controlled vocabulary.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ThemeConcept</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A concept in a knowledge organization system or controlled vocabulary."""</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Serialize this concept to its STAC representation."""</span>
+        <span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="s2">"url"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ThemeConcept</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Deserialize a concept from its STAC representation."""</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]),</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)),</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"description"</span><span class="p">)),</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"url"</span><span class="p">)),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;ThemeConcept id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&gt;"</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.ThemeConcept.from_dict" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ThemeConcept</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.ThemeConcept.from_dict" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Deserialize a concept from its STAC representation.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ThemeConcept</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Deserialize a concept from its STAC representation."""</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]),</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"title"</span><span class="p">)),</span>
+        <span class="n">description</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"description"</span><span class="p">)),</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"url"</span><span class="p">)),</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.ThemeConcept.to_dict" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">to_dict</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></code>
+
+<a href="#pystac.extensions.themes.ThemeConcept.to_dict" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize this concept to its STAC representation.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Serialize this concept to its STAC representation."""</span>
+    <span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">"description"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">"url"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.Theme" class="doc doc-heading">
+            <code>Theme</code>
+
+
+<a href="#pystac.extensions.themes.Theme" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+
+        <p>A set of concepts from a knowledge organization system.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Theme</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A set of concepts from a knowledge organization system."""</span>
+
+    <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">concepts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ThemeConcept</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">concepts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ThemeConcept</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="n">scheme</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span> <span class="o">=</span> <span class="n">concepts</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Serialize this theme to its STAC representation."""</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"scheme"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">scheme</span><span class="p">,</span>
+            <span class="s2">"concepts"</span><span class="p">:</span> <span class="p">[</span><span class="n">concept</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">concept</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">],</span>
+        <span class="p">}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Theme</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Deserialize a theme from its STAC representation."""</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">scheme</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">"scheme"</span><span class="p">]),</span>
+            <span class="n">concepts</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">ThemeConcept</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">concept</span> <span class="ow">in</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"list[dict[str, Any]]"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">"concepts"</span><span class="p">])</span>
+            <span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;Theme scheme=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scheme</span><span class="si">}</span><span class="s2">&gt;"</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.Theme.from_dict" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Theme</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.Theme.from_dict" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Deserialize a theme from its STAC representation.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Theme</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Deserialize a theme from its STAC representation."""</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+        <span class="n">scheme</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="s2">"str"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">"scheme"</span><span class="p">]),</span>
+        <span class="n">concepts</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ThemeConcept</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">concept</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">concept</span> <span class="ow">in</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"list[dict[str, Any]]"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s2">"concepts"</span><span class="p">])</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.Theme.to_dict" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">to_dict</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></code>
+
+<a href="#pystac.extensions.themes.Theme.to_dict" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Serialize this theme to its STAC representation.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Serialize this theme to its STAC representation."""</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"scheme"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">scheme</span><span class="p">,</span>
+        <span class="s2">"concepts"</span><span class="p">:</span> <span class="p">[</span><span class="n">concept</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">concept</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">concepts</span><span class="p">],</span>
+    <span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.ThemesExtension" class="doc doc-heading">
+            <code>ThemesExtension</code>
+
+
+<a href="#pystac.extensions.themes.ThemesExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="typing.Generic">Generic</span>[<span title="pystac.extensions.themes.T">T</span>]</code>, <code><span title="pystac.extensions.base.PropertiesExtension">PropertiesExtension</span></code>, <code><span title="pystac.extensions.base.ExtensionManagementMixin">ExtensionManagementMixin</span>[<span title="pystac.Catalog">Catalog</span> | <span title="pystac.Collection">Collection</span> | <span title="pystac.Item">Item</span>]</code></p>
+
+
+
+        <p>The Themes Extension for Catalogs, Collections, and Items.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ThemesExtension</span><span class="p">(</span>
+    <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+    <span class="n">PropertiesExtension</span><span class="p">,</span>
+    <span class="n">ExtensionManagementMixin</span><span class="p">[</span><span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">],</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""The Themes Extension for Catalogs, Collections, and Items."""</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"themes"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"themes"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">themes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Apply Themes Extension fields to the extended STAC object."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">themes</span> <span class="o">=</span> <span class="n">themes</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">themes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The themes for the extended object, or ``None`` when absent."""</span>
+        <span class="k">return</span> <span class="n">map_opt</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">themes</span><span class="p">:</span> <span class="p">[</span><span class="n">Theme</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span> <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_property</span><span class="p">(</span><span class="n">THEMES_PROP</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@themes</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">themes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span>
+            <span class="n">THEMES_PROP</span><span class="p">,</span>
+            <span class="n">map_opt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">themes</span><span class="p">:</span> <span class="p">[</span><span class="n">theme</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">],</span> <span class="n">value</span><span class="p">),</span>
+            <span class="n">pop_if_none</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_schema_uri</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the Themes v1.0.0 schema URI."""</span>
+        <span class="k">return</span> <span class="n">SCHEMA_URI</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ext</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ThemesExtension</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Wrap a Catalog, Collection, or Item to access its themes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            obj: STAC object whose theme metadata will be read or updated.</span>
+<span class="sd">            add_if_missing: Add the schema URI to the object's extension list.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            pystac.ExtensionNotImplemented: If the declaration is missing and</span>
+<span class="sd">                ``add_if_missing`` is false.</span>
+<span class="sd">            pystac.ExtensionTypeError: If the object type is unsupported.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"ThemesExtension[T]"</span><span class="p">,</span> <span class="n">CollectionThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"ThemesExtension[T]"</span><span class="p">,</span> <span class="n">CatalogThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"ThemesExtension[T]"</span><span class="p">,</span> <span class="n">ItemThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ExtensionTypeError</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_ext_error_message</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">summaries</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SummariesThemesExtension</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the Themes Extension wrapper for Collection summaries."""</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SummariesThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.themes.ThemesExtension.themes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">themes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.ThemesExtension.themes" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The themes for the extended object, or <code>None</code> when absent.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.ThemesExtension.apply" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply</span><span class="p">(</span><span class="n">themes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+<a href="#pystac.extensions.themes.ThemesExtension.apply" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Apply Themes Extension fields to the extended STAC object.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">themes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Apply Themes Extension fields to the extended STAC object."""</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">themes</span> <span class="o">=</span> <span class="n">themes</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.ThemesExtension.ext" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ext</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ThemesExtension</span><span class="p">[</span><span class="n">T</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.ThemesExtension.ext" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrap a Catalog, Collection, or Item to access its themes.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>obj</code></b>
+                  (<code><span title="pystac.extensions.themes.T">T</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>STAC object whose theme metadata will be read or updated.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>add_if_missing</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Add the schema URI to the object's extension list.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="pystac.ExtensionNotImplemented">ExtensionNotImplemented</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If the declaration is missing and
+<code>add_if_missing</code> is false.</p>
+              </div>
+            </li>
+            <li>
+                  <code><span title="pystac.ExtensionTypeError">ExtensionTypeError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If the object type is unsupported.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ext</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ThemesExtension</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Wrap a Catalog, Collection, or Item to access its themes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obj: STAC object whose theme metadata will be read or updated.</span>
+<span class="sd">        add_if_missing: Add the schema URI to the object's extension list.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        pystac.ExtensionNotImplemented: If the declaration is missing and</span>
+<span class="sd">            ``add_if_missing`` is false.</span>
+<span class="sd">        pystac.ExtensionTypeError: If the object type is unsupported.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"ThemesExtension[T]"</span><span class="p">,</span> <span class="n">CollectionThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"ThemesExtension[T]"</span><span class="p">,</span> <span class="n">CatalogThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"ThemesExtension[T]"</span><span class="p">,</span> <span class="n">ItemThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+    <span class="k">raise</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ExtensionTypeError</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_ext_error_message</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.ThemesExtension.get_schema_uri" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_schema_uri</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.ThemesExtension.get_schema_uri" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the Themes v1.0.0 schema URI.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_schema_uri</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the Themes v1.0.0 schema URI."""</span>
+    <span class="k">return</span> <span class="n">SCHEMA_URI</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.themes.ThemesExtension.summaries" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">summaries</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SummariesThemesExtension</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.ThemesExtension.summaries" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the Themes Extension wrapper for Collection summaries.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">summaries</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SummariesThemesExtension</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the Themes Extension wrapper for Collection summaries."""</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SummariesThemesExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.CatalogThemesExtension" class="doc doc-heading">
+            <code>CatalogThemesExtension</code>
+
+
+<a href="#pystac.extensions.themes.CatalogThemesExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="ThemesExtension (pystac.extensions.themes.ThemesExtension)" href="#pystac.extensions.themes.ThemesExtension">ThemesExtension</a>[<span title="pystac.Catalog">Catalog</span>]</code></p>
+
+
+
+        <p>Read and write themes on a STAC Catalog.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">CatalogThemesExtension</span><span class="p">(</span><span class="n">ThemesExtension</span><span class="p">[</span><span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">"""Read and write themes on a STAC Catalog."""</span>
+
+    <span class="n">catalog</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span>
+    <span class="n">properties</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">catalog</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">catalog</span> <span class="o">=</span> <span class="n">catalog</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">extra_fields</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;CatalogThemesExtension Catalog id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&gt;"</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.CollectionThemesExtension" class="doc doc-heading">
+            <code>CollectionThemesExtension</code>
+
+
+<a href="#pystac.extensions.themes.CollectionThemesExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="ThemesExtension (pystac.extensions.themes.ThemesExtension)" href="#pystac.extensions.themes.ThemesExtension">ThemesExtension</a>[<span title="pystac.Collection">Collection</span>]</code></p>
+
+
+
+        <p>Read and write themes on a STAC Collection.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">CollectionThemesExtension</span><span class="p">(</span><span class="n">ThemesExtension</span><span class="p">[</span><span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">"""Read and write themes on a STAC Collection."""</span>
+
+    <span class="n">collection</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span>
+    <span class="n">properties</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collection</span> <span class="o">=</span> <span class="n">collection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">extra_fields</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;CollectionThemesExtension Collection id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&gt;"</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.ItemThemesExtension" class="doc doc-heading">
+            <code>ItemThemesExtension</code>
+
+
+<a href="#pystac.extensions.themes.ItemThemesExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="ThemesExtension (pystac.extensions.themes.ThemesExtension)" href="#pystac.extensions.themes.ThemesExtension">ThemesExtension</a>[<span title="pystac.Item">Item</span>]</code></p>
+
+
+
+        <p>Read and write themes on a STAC Item.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ItemThemesExtension</span><span class="p">(</span><span class="n">ThemesExtension</span><span class="p">[</span><span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">"""Read and write themes on a STAC Item."""</span>
+
+    <span class="n">item</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span>
+    <span class="n">properties</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">properties</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"&lt;ItemThemesExtension Item id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&gt;"</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.SummariesThemesExtension" class="doc doc-heading">
+            <code>SummariesThemesExtension</code>
+
+
+<a href="#pystac.extensions.themes.SummariesThemesExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pystac.extensions.base.SummariesExtension">SummariesExtension</span></code></p>
+
+
+
+        <p>The Themes Extension for Collection summaries.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SummariesThemesExtension</span><span class="p">(</span><span class="n">SummariesExtension</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""The Themes Extension for Collection summaries."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">themes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The themes in Collection summaries, or ``None`` when absent."""</span>
+        <span class="k">return</span> <span class="n">map_opt</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">themes</span><span class="p">:</span> <span class="p">[</span><span class="n">Theme</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">theme</span><span class="p">)</span> <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="n">THEMES_PROP</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@themes</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">themes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_summary</span><span class="p">(</span>
+            <span class="n">THEMES_PROP</span><span class="p">,</span>
+            <span class="n">map_opt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">themes</span><span class="p">:</span> <span class="p">[</span><span class="n">theme</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">],</span> <span class="n">value</span><span class="p">),</span>
+        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.themes.SummariesThemesExtension.themes" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">themes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Theme</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.themes.SummariesThemesExtension.themes" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The themes in Collection summaries, or <code>None</code> when absent.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.themes.ThemesExtensionHooks" class="doc doc-heading">
+            <code>ThemesExtensionHooks</code>
+
+
+<a href="#pystac.extensions.themes.ThemesExtensionHooks" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pystac.extensions.hooks.ExtensionHooks">ExtensionHooks</span></code></p>
+
+
+
+        <p>Declare the schema and STAC object types supported by Themes.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/themes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ThemesExtensionHooks</span><span class="p">(</span><span class="n">ExtensionHooks</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Declare the schema and STAC object types supported by Themes."""</span>
+
+    <span class="n">schema_uri</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SCHEMA_URI</span>
+    <span class="n">prev_extension_ids</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">stac_object_types</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="n">pystac</span><span class="o">.</span><span class="n">STACObjectType</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">pystac</span><span class="o">.</span><span class="n">STACObjectType</span><span class="o">.</span><span class="n">CATALOG</span><span class="p">,</span>
+        <span class="n">pystac</span><span class="o">.</span><span class="n">STACObjectType</span><span class="o">.</span><span class="n">COLLECTION</span><span class="p">,</span>
+        <span class="n">pystac</span><span class="o">.</span><span class="n">STACObjectType</span><span class="o">.</span><span class="n">ITEM</span><span class="p">,</span>
+    <span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fields/" class="btn btn-neutral float-left" title="Theme fields"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../explanation/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Terradue/pystac-ext-themes" class="fa fa-code-fork" style="color: #fcfcfc"> pystac-ext-themes</a>
+        </span>
+    
+    
+      <span><a href="../fields/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../explanation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
