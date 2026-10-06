@@ -17,3 +17,5 @@ limitations under the License.
 # Tutorials
 
 [Create your first Item with themes](first-steps.md), attach concepts from a vocabulary, and serialize them to STAC JSON. The example runs without network access.
+
+[Simplify EarthCODE theme metadata](earthcode.md) by replacing manual dictionaries with the extension API while retaining OSC catalog checks and related links.

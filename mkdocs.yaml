@@ -27,6 +27,7 @@ nav:
   - Tutorials:
       - Overview: tutorials/index.md
       - First steps: tutorials/first-steps.md
+      - EarthCODE theme metadata: tutorials/earthcode.md
   - How-to guides:
       - Overview: how-to/index.md
       - Install: how-to/install.md
